@@ -29,6 +29,66 @@ Libro libro4 = new Libro("BOOK004", "La vita è", 2010, "Inchiesta", "Disponibil
 
 Utente gloria = new Utente("Gloria", "Gherardi", "laglo@yahoo.it", 3456578894);
 
+
+Console.WriteLine("Premi 1 per eseguire una ricerca");
+Console.WriteLine("Premi 2 per effettuare un prestito");
+Console.WriteLine("Premi 3 per cercare un prestito");
+
+int sceltaUser = Convert.ToInt32(Console.ReadLine());
+if (sceltaUser == 1)
+{
+    Console.WriteLine("Premi 1 per cercare per codice");
+    Console.WriteLine("Premi 2 per cercare per titolo");
+    sceltaUser = Convert.ToInt32(Console.ReadLine());
+    if (sceltaUser == 1)
+    {
+        Console.WriteLine("Inserisci il codice");
+        sceltaUser = Convert.ToInt32(Console.ReadLine());
+
+    }
+    else if (sceltaUser == 2)
+    {
+        Console.Clear();
+        Console.WriteLine("Inserisci il titolo");
+        sceltaUser = Convert.ToInt32(Console.ReadLine());
+
+    }
+}
+else if (sceltaUser == 2)
+{
+    Console.Clear();
+    Console.WriteLine("Inserisci periodo da cui parte il prestito");
+    string inizioPrestito = Console.ReadLine();
+    Console.WriteLine("Inserisci periodo in cui finisce il prestito");
+    string finePrestito = Console.ReadLine();
+    Console.WriteLine("DVD o LIBRO?");
+    string scelta = Console.ReadLine();
+    Console.WriteLine("Titolo del documento da prenotare?");
+    string documento = Console.ReadLine();
+    if(scelta == "DVD")
+    {
+
+    } else
+    {
+
+    }
+
+
+}
+else if (sceltaUser == 3)
+{
+    Console.Clear();
+    Console.WriteLine("Inserisci il nome di chi devo cercare il prestito");
+    string nome = Console.ReadLine();
+    Console.WriteLine("Inserisci il cognome di chi devo cercare il prestito");
+    string cognome = Console.ReadLine();
+}
+else
+{
+    Console.WriteLine("Scelta errata");
+
+}
+
 public class Utente
 {
         public string Nome { get; }
