@@ -78,7 +78,7 @@ if (sceltaUser == 1)
 
         foreach (Documento item in documenti)
         {
-             if(item.Codice == codiceRicerca)
+            if (item.Codice == codiceRicerca)
             {
 
                 Console.WriteLine("Trovato {1}: {0} ", item, item.GetType().ToString());
@@ -113,18 +113,16 @@ else if (sceltaUser == 2)
     string inizioPrestito = Console.ReadLine();
     Console.WriteLine("Inserisci periodo in cui finisce il prestito");
     string finePrestito = Console.ReadLine();
-    Console.WriteLine("DVD o LIBRO?");
-    string scelta = Console.ReadLine();
     Console.WriteLine("Titolo del documento da prenotare?");
     string documento = Console.ReadLine();
-    if(scelta == "DVD")
-    {
+    Console.WriteLine("Inserisci il nome di chi devo effettuare il prestito");
+    string nome = Console.ReadLine();
+    Console.WriteLine("Inserisci il cognome");
+    string cognome = Console.ReadLine();
+    Prestito prestito = new Prestito(inizioPrestito, finePrestito, documento, nome, cognome);
 
-    } else
-    {
-
-    }
-
+    prestiti.Add(prestito);
+    Console.WriteLine("Prestito Aggiunto");
 
 }
 else if (sceltaUser == 3)
