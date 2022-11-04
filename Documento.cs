@@ -24,7 +24,7 @@
 
 public class Documento
 {
-    public string Codice { get; }
+    public string Codice { get; set; }
     public string Titolo { get; }
 
     public int Anno { get; set; }
@@ -42,6 +42,10 @@ public class Documento
         Stato = stato;
         Scaffale = scaffale;
         Autore = autore;
+    }
+    public override string ToString()
+    {
+        return  Titolo + " Codice : " + Codice;
     }
 }
 

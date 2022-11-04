@@ -28,8 +28,38 @@ Libro libro3 = new Libro("BOOK003", "Guerra e basta", 1899, "Amore", "In prestit
 Libro libro4 = new Libro("BOOK004", "La vita è", 2010, "Inchiesta", "Disponibile", "E3", "Pippo Gialli", 700);
 
 Utente gloria = new Utente("Gloria", "Gherardi", "laglo@yahoo.it", 3456578894);
+Utente alessandro = new Utente("Alessandro", "Verdi", "ale@yahoo.it", 3456345894);
+
+Prestito prestito1 = new Prestito("11 maggio 2022", "11 giugno 2022", "Cuori infranti", "Gloria", "Gherardi");
+Prestito prestito2 = new Prestito("15 maggio 2022", "15 giugno 2022", "Corri corri Pimpa", "Alessandro", "Martignani");
+Prestito prestito3 = new Prestito("15 maggio 2022", "15 giugno 2022", "Guerra e Basta", "Alessandro", "Martignani");
 
 
+//creo lista documenti
+List<Documento> documenti = new List<Documento>();
+
+documenti.Add(dvd1);
+documenti.Add(dvd2);
+documenti.Add(dvd3);
+documenti.Add(dvd4);
+documenti.Add(libro1);
+documenti.Add(libro2);
+documenti.Add(libro3);
+documenti.Add(libro4);
+
+//creo lista utenti
+List<Utente> utenti = new List<Utente>();
+
+utenti.Add(gloria);
+utenti.Add(alessandro);
+
+//creo lista prestiti
+List<Prestito> prestiti = new List<Prestito>();
+
+prestiti.Add(prestito1);
+prestiti.Add(prestito2);
+
+//inizio programma scelta utente
 Console.WriteLine("Premi 1 per eseguire una ricerca");
 Console.WriteLine("Premi 2 per effettuare un prestito");
 Console.WriteLine("Premi 3 per cercare un prestito");
@@ -37,21 +67,43 @@ Console.WriteLine("Premi 3 per cercare un prestito");
 int sceltaUser = Convert.ToInt32(Console.ReadLine());
 if (sceltaUser == 1)
 {
+
     Console.WriteLine("Premi 1 per cercare per codice");
     Console.WriteLine("Premi 2 per cercare per titolo");
     sceltaUser = Convert.ToInt32(Console.ReadLine());
     if (sceltaUser == 1)
     {
         Console.WriteLine("Inserisci il codice");
-        sceltaUser = Convert.ToInt32(Console.ReadLine());
+        string codiceRicerca = Console.ReadLine();
+
+        foreach (Documento item in documenti)
+        {
+             if(item.Codice == codiceRicerca)
+            {
+
+                Console.WriteLine("Trovato {1}: {0} ", item, item.GetType().ToString());
+
+            }
+
+        }
 
     }
     else if (sceltaUser == 2)
     {
         Console.Clear();
         Console.WriteLine("Inserisci il titolo");
-        sceltaUser = Convert.ToInt32(Console.ReadLine());
+        string titoloRicerca = Console.ReadLine();
 
+        foreach (Documento item in documenti)
+        {
+            if (item.Titolo == titoloRicerca)
+            {
+
+                Console.WriteLine("Trovato {1}: {0} ", item, item.GetType().ToString());
+
+            }
+
+        }
     }
 }
 else if (sceltaUser == 2)
@@ -82,6 +134,16 @@ else if (sceltaUser == 3)
     string nome = Console.ReadLine();
     Console.WriteLine("Inserisci il cognome di chi devo cercare il prestito");
     string cognome = Console.ReadLine();
+
+    foreach (Prestito item in prestiti)
+    {
+        if (item.Nome == nome && item.Cognome == cognome)
+        {
+            Console.WriteLine("Trovato {1}: {0} ", item, item.GetType().ToString());
+        }
+
+    }
+
 }
 else
 {

@@ -26,14 +26,23 @@ public class Prestito
 {
     public string PrestitoDal { get; }
     public string PrestitoAl { get; }
+    public string Documento { get; set; }
+    public string Nome { get; set; }
 
-    public int Documento { get; set; }
+    public string Cognome { get; set; }
 
-    public Prestito(string prestitoDal, string prestitoAl, int documento)
+    public Prestito(string prestitoDal, string prestitoAl, string documento, string nome, string cognome)
     {
         this.PrestitoDal = prestitoDal;
         this.PrestitoAl = prestitoAl;
         this.Documento = documento;
+        this.Nome = nome;
+        this.Cognome = cognome;
+
+    }
+    public override string ToString()
+    {
+        return Documento + ". Prestito dal " + PrestitoDal +  " al " + PrestitoAl + ".";
     }
 }
 
