@@ -58,6 +58,7 @@ List<Prestito> prestiti = new List<Prestito>();
 
 prestiti.Add(prestito1);
 prestiti.Add(prestito2);
+prestiti.Add(prestito3);
 
 //inizio programma scelta utente
 Console.WriteLine("Premi 1 per eseguire una ricerca");
