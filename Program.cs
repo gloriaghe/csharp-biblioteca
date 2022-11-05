@@ -27,12 +27,12 @@ Libro libro2 = new Libro("BOOK002", "L'amore e la vita delle tarantole", 2022, "
 Libro libro3 = new Libro("BOOK003", "Guerra e basta", 1899, "Amore", "In prestito", "D7", "Pippo Rossi", 150);
 Libro libro4 = new Libro("BOOK004", "La vita è", 2010, "Inchiesta", "Disponibile", "E3", "Pippo Gialli", 700);
 
-Utente gloria = new Utente("Gloria", "Gherardi", "laglo@yahoo.it", 3456578894);
-Utente alessandro = new Utente("Alessandro", "Verdi", "ale@yahoo.it", 3456345894);
+Utente gloria = new Utente("Gloria", "Gherardi", "laglo@yahoo.it", "3456578894");
+Utente alessandro = new Utente("Alessandro", "Verdi", "ale@yahoo.it", "3456345894");
 
-Prestito prestito1 = new Prestito("11 maggio 2022", "11 giugno 2022", "Cuori infranti", "Gloria", "Gherardi");
-Prestito prestito2 = new Prestito("15 maggio 2022", "15 giugno 2022", "Corri corri Pimpa", "Alessandro", "Martignani");
-Prestito prestito3 = new Prestito("15 maggio 2022", "15 giugno 2022", "Guerra e Basta", "Alessandro", "Martignani");
+Prestito prestito1 = new Prestito("11 maggio 2022", "11 giugno 2022", dvd3, gloria);
+Prestito prestito2 = new Prestito("15 maggio 2022", "15 giugno 2022", libro1, alessandro);
+Prestito prestito3 = new Prestito("15 maggio 2022", "15 giugno 2022", libro4, alessandro);
 
 
 //creo lista documenti
@@ -47,7 +47,7 @@ documenti.Add(libro2);
 documenti.Add(libro3);
 documenti.Add(libro4);
 
-//creo lista utenti
+////creo lista utenti
 List<Utente> utenti = new List<Utente>();
 
 utenti.Add(gloria);
@@ -64,6 +64,8 @@ prestiti.Add(prestito3);
 Console.WriteLine("Premi 1 per eseguire una ricerca");
 Console.WriteLine("Premi 2 per effettuare un prestito");
 Console.WriteLine("Premi 3 per cercare un prestito");
+Console.WriteLine("Premi 4 per aggiungere un utente");
+
 
 int sceltaUser = Convert.ToInt32(Console.ReadLine());
 if (sceltaUser == 1)
@@ -86,7 +88,9 @@ if (sceltaUser == 1)
 
             }
 
+
         }
+
 
     }
     else if (sceltaUser == 2)
@@ -104,6 +108,7 @@ if (sceltaUser == 1)
 
             }
 
+
         }
     }
 }
@@ -115,15 +120,53 @@ else if (sceltaUser == 2)
     Console.WriteLine("Inserisci periodo in cui finisce il prestito");
     string finePrestito = Console.ReadLine();
     Console.WriteLine("Titolo del documento da prenotare?");
-    string documento = Console.ReadLine();
-    Console.WriteLine("Inserisci il nome di chi devo effettuare il prestito");
-    string nome = Console.ReadLine();
-    Console.WriteLine("Inserisci il cognome");
-    string cognome = Console.ReadLine();
-    Prestito prestito = new Prestito(inizioPrestito, finePrestito, documento, nome, cognome);
+    string titoloRicerca = Console.ReadLine();
+    Documento documentoPrestito = new Documento("", "", 0, "", "", "", "");
+    bool presente = true;
+    foreach (Documento item in documenti)
+    {
+        
+            
+        if (item.Titolo == titoloRicerca)
+        {
+            Console.WriteLine("Trovato {1}: {0} ", item, item.GetType().ToString());
+            documentoPrestito = item;
 
-    prestiti.Add(prestito);
-    Console.WriteLine("Prestito Aggiunto");
+            if(item.Stato == "In prestito")
+            {
+                Console.Clear();
+                Console.WriteLine("Il documento non è al momento disponibile!");
+                presente = false;
+            }
+        }
+    }
+    //se documento non trovato
+    if (documentoPrestito.Titolo == "")
+    {
+        Console.Clear();
+        Console.WriteLine("Documento non trovato!");
+    }
+    else if (presente == true)
+    {
+        Console.WriteLine("Inserisci il nome di chi devo effettuare il prestito");
+        string nome = Console.ReadLine();
+        Console.WriteLine("Inserisci il cognome");
+        string cognome = Console.ReadLine();
+
+        foreach (Utente item in utenti)
+        {
+            if (item.Nome == nome && item.Cognome == cognome)
+            {
+
+                Utente utente = item;
+                Prestito prestito = new Prestito(inizioPrestito, finePrestito, documentoPrestito, utente);
+                Console.WriteLine("Inserito {1}: {0} ", prestito, prestito.GetType().ToString());
+                prestiti.Add(prestito);
+            }
+        }
+
+    }
+
 
 }
 else if (sceltaUser == 3)
@@ -136,7 +179,7 @@ else if (sceltaUser == 3)
 
     foreach (Prestito item in prestiti)
     {
-        if (item.Nome == nome && item.Cognome == cognome)
+        if (item.Utente.Nome == nome && item.Utente.Cognome == cognome)
         {
             Console.WriteLine("Trovato {1}: {0} ", item, item.GetType().ToString());
         }
@@ -144,9 +187,49 @@ else if (sceltaUser == 3)
     }
 
 }
+else if (sceltaUser == 4)
+{
+    Console.Clear();
+    Console.WriteLine("Inserisci il nome");
+    string nome = Console.ReadLine();
+    Console.WriteLine("Inserisci il cognome");
+    string cognome = Console.ReadLine();
+    Console.WriteLine("Inserisci la mail");
+    string email = Console.ReadLine();
+    Console.WriteLine("Inserisci il telefono");
+    string telefono = Console.ReadLine();
+
+    Utente nuovo = new Utente(nome, cognome, email, telefono);
+
+    Console.WriteLine("{0}", nuovo, nuovo.GetType().ToString());
+}
 else
 {
     Console.WriteLine("Scelta errata");
 
 }
 
+public class Biblioteca
+{
+    string[] nomi = {"Gloria", "Giulio", "Federico", "Alessandro"};
+    string[] cognomi = { "Rossi", "Verdi", "Bianchi", "Gialli" };
+    string[] email = { "gloria@gmail.com", "giulio@gmail.com", "federico@gmail.com", "alessandro@gmail.com" };
+    string[] telefono = { "343252525", "324235235", "53264346326", "3665466246" };
+    public List<Utente> utenti = new List<Utente>();
+    //public List<Documento> documenti = new List<Documento>();
+
+    public Biblioteca()
+    {
+        users = new Utente[4];
+
+        for (int i = 0; i < 4; i++)
+        {
+            users[i] = new Utente(nomi[i], cognomi[i], email[i], telefono[i]);
+            utenti.Add(users[i]);
+
+        }
+    }
+    public Utente[] users;
+
+    
+}
