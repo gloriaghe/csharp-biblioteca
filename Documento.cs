@@ -35,13 +35,13 @@ public class Documento
 
     public Documento(string codice, string titolo, int anno, string settore, string stato, string scaffale, string autore)
     {
-        Codice = codice;
-        Titolo = titolo;
-        Anno = anno;
-        Settore = settore;
-        Stato = stato;
-        Scaffale = scaffale;
-        Autore = autore;
+        this.Codice = codice;
+        this.Titolo = titolo;
+        this.Anno = anno;
+        this.Settore = settore;
+        this.Stato = stato;
+        this.Scaffale = scaffale;
+        this.Autore = autore;
     }
     public override string ToString()
     {

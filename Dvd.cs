@@ -28,7 +28,7 @@ public class Dvd : Documento
 
     public Dvd(string codice, string titolo, int anno, string settore, string stato, string scaffale, string autore, int durata) : base(codice, titolo, anno, settore, stato, scaffale, autore)
     {
-        Durata = durata;
+        this.Durata = durata;
     }
 }
 
