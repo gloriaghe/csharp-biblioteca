@@ -61,7 +61,9 @@ else if (sceltaUser == 2)
     string finePrestito = Console.ReadLine();
     Console.WriteLine("Titolo del documento da prenotare?");
     string titoloRicerca = Console.ReadLine();
-    Documento documentoPrestito = new Documento("", "", 0, "", "", "", "", "");
+    //Documento documentoPrestito = new Documento("", "", 0, "", "", "", "", "");
+    Documento documentoPrestito = null;
+
     bool presente = true;
 
     biblioteca.Prestiti(inizioPrestito, finePrestito, titoloRicerca,  documentoPrestito,  presente);
