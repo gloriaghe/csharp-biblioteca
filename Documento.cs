@@ -31,9 +31,11 @@ public class Documento
     public string Settore { get; }
     public string Stato { get; set; }
     public string Scaffale { get; set; }
-    public string Autore { get; }
+    public string NomeAutore { get; }
+    public string CognomeAutore { get; }
 
-    public Documento(string codice, string titolo, int anno, string settore, string stato, string scaffale, string autore)
+
+    public Documento(string codice, string titolo, int anno, string settore, string stato, string scaffale, string nomeautore, string cognomeautore)
     {
         this.Codice = codice;
         this.Titolo = titolo;
@@ -41,7 +43,9 @@ public class Documento
         this.Settore = settore;
         this.Stato = stato;
         this.Scaffale = scaffale;
-        this.Autore = autore;
+        this.NomeAutore = nomeautore;
+        this.CognomeAutore = cognomeautore;
+
     }
     public override string ToString()
     {

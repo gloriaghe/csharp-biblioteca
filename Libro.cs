@@ -26,7 +26,7 @@ public class Libro : Documento
 {
     public int Pagine { get; }
 
-    public Libro(string codice, string titolo, int anno, string settore, string stato, string scaffale, string autore, int pagine) :base(codice, titolo, anno, settore, stato, scaffale, autore)
+    public Libro(string codice, string titolo, int anno, string settore, string stato, string scaffale, string nomeautore, string cognomeautore, int pagine) :base(codice, titolo, anno, settore, stato, scaffale, nomeautore, cognomeautore)
     {
         this.Pagine = pagine;
 

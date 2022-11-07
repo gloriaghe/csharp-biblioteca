@@ -34,7 +34,9 @@ public class Biblioteca
     string[] settore = { "Cucina", "Economia", "Politica", "Commedia" };
     string[] stato = { "In prestito", "Disponibile", "In prestito", "Disponibile" };
     string[] scaffale = { "B4", "C5", "D7", "I9" };
-    string[] autore = { "Topolino", "Paperino", "Minnie", "Spiderman" };
+    string[] nomeautore = { "Topolino", "Paperino", "Minnie", "Spiderman" };
+    string[] cognomeautore = { "Topolini", "Paperini", "Topina", "Ragno" };
+
     int[] durata = { 120, 150, 80, 115 };
     int[] pagine = { 500, 300, 280, 315 };
 
@@ -56,8 +58,8 @@ public class Biblioteca
         {
             users[i] = new Utente(nomi[i], cognomi[i], email[i], telefono[i]);
             utenti.Add(users[i]);
-            dvds[i] = new Dvd(codice[i], titoloDVD[i], anno[i], settore[i], stato[i], scaffale[i], autore[i], durata[i]);
-            libri[i] = new Libro(codiceISBN[i], titoloLibri[i], anno[i], settore[i], stato[i], scaffale[i], autore[i], pagine[i]);
+            dvds[i] = new Dvd(codice[i], titoloDVD[i], anno[i], settore[i], stato[i], scaffale[i], nomeautore[i], cognomeautore[i], durata[i]);
+            libri[i] = new Libro(codiceISBN[i], titoloLibri[i], anno[i], settore[i], stato[i], scaffale[i], nomeautore[i], cognomeautore[i], pagine[i]);
 
             documenti.Add(dvds[i]);
             documenti.Add(libri[i]);
@@ -119,7 +121,7 @@ public class Biblioteca
             Console.Clear();
             Console.WriteLine("Documento non trovato!");
         }
-        //se presente
+        //se presente in biblioteca
         if (presente == true)
         {
             Console.WriteLine("Inserisci il nome di chi devo effettuare il prestito");

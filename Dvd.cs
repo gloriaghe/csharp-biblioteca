@@ -26,7 +26,7 @@ public class Dvd : Documento
 {
     public int Durata { get; }
 
-    public Dvd(string codice, string titolo, int anno, string settore, string stato, string scaffale, string autore, int durata) : base(codice, titolo, anno, settore, stato, scaffale, autore)
+    public Dvd(string codice, string titolo, int anno, string settore, string stato, string scaffale, string nomeautore, string cognomeautore, int durata) : base(codice, titolo, anno, settore, stato, scaffale, nomeautore, cognomeautore)
     {
         this.Durata = durata;
     }
